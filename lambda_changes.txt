@@ -1,1 +1,1 @@
-newrust,test
+rust,test_libs
