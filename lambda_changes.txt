@@ -1,1 +1,1 @@
-aws_utils/sns
+saas_freemium_system_logs_parser,aws_utils/sns
