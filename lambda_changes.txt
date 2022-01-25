@@ -1,1 +1,1 @@
-rust,test_libs
+aws_utils/sns
