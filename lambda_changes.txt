@@ -1,1 +1,1 @@
-saas_freemium_system_logs_parser,aws_utils/sns
+authorizer,hyper-rustls
