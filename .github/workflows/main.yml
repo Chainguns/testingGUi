@@ -1,0 +1,31 @@
+on: [push, pull_request]
+
+name: Click here to see job results 
+
+jobs:          
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read file
+        run: |
+             FILE=$(cat lambda_changes.txt)
+             echo "FILE=$FILE" >> $GITHUB_ENV
+      - name: split changes
+        uses: jungwinter/split@v2
+        id: split
+        with:
+          msg: ${{ env.FILE }}
+          separator: ','
+      - name: Assign lambda changes to env
+        run:  |
+          echo "FEATURE=${{ steps.split.outputs._1 }}" >> $GITHUB_ENV
+          echo "FUNCTION=${{ steps.split.outputs._0 }}" >> $GITHUB_ENV
+          sudo apt install musl-tools
+      - name: dispaly vars
+        run: |
+              echo ${{ env.FEATURE }}
+              echo ${{ env.FUNCTION }}
+          
+       
